@@ -10,8 +10,7 @@ const h4Card = "text-sm text-[var(--color-tab-text)] italic mb-3";
 const iconWrap =
   "w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center mb-4 shrink-0";
 const iconCls = "text-[22px] text-primaryDark";
-const card =
-  "bg-white/60 backdrop-blur-md rounded-xl p-6 shadow-sm flex flex-col";
+const card = "bg-white bg-opacity-40 rounded-xl p-6 shadow-sm flex flex-col";
 
 // ── Services offerts cards ────────────────────────────────────────────────────
 const SERVICES = [
