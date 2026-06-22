@@ -182,7 +182,7 @@ export default function ServicesPage() {
               <h1 className={sectionTitle}>NOS SERVICES</h1>
             </div>
 
-            <div className="w-[95%] mx-auto flex flex-col gap-8">
+            <div className="w-[95%] mx-auto flex flex-col gap-12">
               {/* ── Services offerts ──────────────────────────────── */}
               <div data-aos="fade-up">
                 <div className="grid grid-cols-2 gap-5 max-[640px]:grid-cols-1">
@@ -209,7 +209,7 @@ export default function ServicesPage() {
 
               {/* ── Rendez-vous ───────────────────────────────────── */}
               <div data-aos="fade-up">
-                <h2 className="text-center text-primaryDarker font-display text-xl font-bold mb-10 drop-shadow">
+                <h2 className="text-primaryDarker font-display text-2xl font-bold mb-10 drop-shadow">
                   Rendez-vous avec un professionnel
                 </h2>
                 <div className="grid grid-cols-2 gap-5 max-[640px]:grid-cols-1">
