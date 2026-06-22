@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════
+   DESIGN TOKENS — edit here to retheme the whole site
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+    /* CSS variables are kept here for two reasons:
+       1. Raw CSS that Tailwind cannot reach (pseudo-elements, gradients, color-mix)
+       2. Arbitrary-value classes still used in JSX, e.g. bg-[var(--color-overlay-nav)]
+       Hex values are the same as in tailwind.config.js — that file is the source of truth. */
+
+    /* Brand */
+    --color-primary: #43f3c1;
+    --color-primary-dark: #37c89f;
+    --color-primary-darker: #228065;
+    --color-primary-light: #67f4dd;
+
+    /* Section backgrounds */
+    --color-hero-banner-center: #d4fdfe;
+
+    /* Navigation */
+    --color-nav-text: #3d3d3d;
+    --color-nav-active: #6e6e6e;
+    --color-mobile-nav-text: #b1b1b1;
+    --color-mobile-nav-hover: #575757;
+
+    /* Hero */
+    --color-hero-title: #363636;
+    --color-hero-subtitle: #5d5d5d;
+
+    /* Contact section */
+    --color-contact-h: #747474;
+    --color-contact-p: #8a8a8a;
+    --color-icon: #8f9195;
+
+    /* Service tabs */
+    --color-tab-text: #464646;
+    --color-tab-border: #488a5b;
+
+    /* Controls */
+    --color-hamburger: #131313;
+    --color-close: #545454;
+
+    /* Overlays */
+    --color-overlay-nav: rgba(225, 249, 255, 0.95);
+    --color-overlay-popup: rgba(175, 175, 175, 0.6);
+}
+
+/* ─── Base ──────────────────────────────────────────────────────── */
+html {
+    scroll-behavior: smooth;
+}
+
+@layer base {
+    body {
+        @apply font-sans text-base antialiased text-body;
+    }
+    a {
+        @apply no-underline transition-all duration-300;
+        color: var(--color-primary-dark);
+    }
+    a:hover {
+        @apply text-primary;
+    }
+}
+
+a {
+    font-weight: 600;
+}
+
+/* ─── Hero background ───────────────────────────────────────────────
+   Original behaviour: image sits at top-right at its natural pixel
+   size; text reads on the left over the white background.
+   ─────────────────────────────────────────────────────────────────── */
+.hero-bg {
+    background: url(/assets/img/banner.png) top right no-repeat;
+}
+
+@media (max-width: 1700px) {
+    .hero-bg {
+        background-position: center top;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-bg {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-bg {
+        background: url(/assets/img/banner_mobile.webp) top center / cover
+            no-repeat;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-bg {
+        background: url(/assets/img/banner_mobile.webp) top right no-repeat;
+        background-size: cover;
+    }
+}
+
+/*
+  ── HERO ALTERNATIVE (gradient) ──────────────────────────────────────
+  If you replace the banner image, swap .hero-bg to:
+    background: linear-gradient(135deg, #f0fffe 0%, #dffdf6 55%, #c2f9ed 100%);
+  Tip: update those stops to match --color-primary-dark when you retheme.
+*/
+
+/* ─── Gradient border animation ────────────────────────────────────── */
+@keyframes gradientBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-border {
+    position: relative;
+    border-radius: 5px;
+    padding: 2px;
+    /* color-mix gives a 32 % tint of the primary token — stays in sync */
+    background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-primary) 32%, transparent),
+        transparent,
+        color-mix(in srgb, var(--color-primary) 32%, transparent)
+    );
+    background-size: 200% 100%;
+    animation: gradientBorder 3s ease-in-out infinite;
+    width: fit-content;
+}
+
+@media (max-width: 768px) {
+    .gradient-border {
+        animation: none;
+    }
+}
+
+/* ─── Accordion slide animation (CSS grid rows trick) ───────────────
+   Outer wrapper transitions grid-template-rows 0fr → 1fr.
+   Inner div needs min-height: 0 for the collapse to work.
+   ─────────────────────────────────────────────────────────────────── */
+.accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+
+.accordion-body.open {
+    grid-template-rows: 1fr;
+}
+
+.accordion-body > div {
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ─── Department section background ────────────────────────────────── */
+.dept-bg {
+    background: url(/assets/img/jevelin/background_section.jpeg) top center /
+        cover;
+}
+
+/* ─── Services page background ─────────────────────────────────────── */
+.services-page-bg {
+    background: url(/assets/img/jevelin/background_service_page.png) center /
+        cover no-repeat;
+}
+
+/* ─── Hero-banner center card (taller background) ───────────────────
+   overflow-hidden must NOT be on the parent grid (only mobile) so this
+   ::before can overflow vertically on desktop.
+   ─────────────────────────────────────────────────────────────────── */
+.center-service {
+    position: relative;
+    z-index: 0;
+}
+
+.center-service::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-hero-banner-center);
+    z-index: -1;
+    transform: scaleY(1.18);
+    border-radius: 20px;
+}
+
+@media (max-width: 1025px) {
+    .center-service::before {
+        transform: scaleX(4);
+    }
+}
+
+/* ─── Section title underline ───────────────────────────────────────── */
+.section-title-line {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title-line::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: var(--color-primary);
+}
+
+/* ─── Contact section background ────────────────────────────────────── */
+.contact-bg {
+    background: url(/assets/img/contact_bg.png) bottom right no-repeat;
+}
+
+/* ─── Back to top button ─────────────────────────────────────────────── */
+.back-to-top-btn {
+    visibility: hidden;
+    opacity: 0;
+    transition:
+        opacity 0.4s,
+        visibility 0.4s;
+}
+
+.back-to-top-btn.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ─── Disable AOS delay on mobile ───────────────────────────────────── */
+@media (max-width: 768px) {
+    [data-aos-delay] {
+        transition-delay: 0 !important;
+    }
+}
