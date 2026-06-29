@@ -11,12 +11,13 @@ const navInactive =
 const navMobile =
   "w-full py-3 px-3 text-[15px] font-semibold text-[var(--color-mobile-nav-text)] hover:text-[var(--color-mobile-nav-hover)] hover:bg-gray-50 bg-transparent border-0 cursor-pointer text-left rounded-md transition-all duration-200";
 
-const SECTIONS = ["hero", "about", "services", "equipe", "contact"];
+const SECTIONS = ["hero", "about", "services", "equipe", "career", "contact"];
 const NAV_LINKS = [
   { label: "Accueil", section: "hero" },
   { label: "À propos", section: "about" },
   { label: "Services", section: "services" },
   { label: "Équipe", section: "equipe" },
+  { label: "Carrière", section: "career" },
   { label: "Contact", section: "contact" },
 ];
 

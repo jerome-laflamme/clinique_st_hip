@@ -19,7 +19,7 @@ const DEPARTMENTS = [
       <>
         <h3 className={h3Card}>Médecins</h3>
         <p className={`${para} mt-1.5 mb-2.5`}>
-          Notre équipe est constitué de onze médecins omnipraticien(ne)s :
+          Notre équipe est constitué de huit médecins omnipraticien(ne)s :
         </p>
         <ul className={`list-disc pl-5 space-y-0.5 ${para}`}>
           <li>Dre Michelle Darveau</li>
@@ -69,9 +69,13 @@ const DEPARTMENTS = [
           Voici les spécialistes qui participent au bon déroulement de la
           clinique, ce service est offert à la clientèle du GMF :
         </p>
-        <ul className={`list-disc pl-5 space-y-0.5 ${para}`}>
-          <li>Lysanne Villemure, Pharmacienne</li>
-          <li>Nathalie Audet, Travailleuse sociale</li>
+        <h3 className={`${h3Card} mb-2.5 text-[1rem]`}>Pharmacienne</h3>
+        <ul className={`list-disc pl-5 space-y-0.5 ${para} mt-1.5`}>
+          <li>Lysanne Villemure</li>
+        </ul>
+        <h3 className={`${h3Card} mt-2.5 text-[1rem]`}>Travailleuse sociale</h3>
+        <ul className={`list-disc pl-5 space-y-0.5 ${para} mt-1.5`}>
+          <li>Nathalie Audet</li>
         </ul>
       </>
     ),
@@ -86,7 +90,7 @@ export default function Team() {
           <div className={sectionHeader} data-aos="fade-up">
             <h3 className={sectionTitle}>Notre équipe</h3>
             <p className={sectionDesc}>
-              Notre équipe clinique regroupe douze médecins, ainsi que deux
+              Notre équipe clinique regroupe huit médecins, ainsi que deux
               infirmières praticiennes spécialisées, trois infirmières
               cliniciennes, une pharmacienne et d'une travailleuse sociale. Nos
               intervenants sont soutenus par une agente administrative, quatre

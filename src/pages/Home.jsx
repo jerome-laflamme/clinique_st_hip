@@ -6,6 +6,7 @@ import HeroBanner from "../components/HeroBanner.jsx";
 import Welcome from "../components/Welcome.jsx";
 import ServicesSection from "../components/ServicesSection.jsx";
 import Team from "../components/Team.jsx";
+import Career from "../components/Career.jsx";
 import Contact from "../components/Contact.jsx";
 import Footer from "../components/Footer.jsx";
 import Popup from "../components/Popup.jsx";
@@ -48,6 +49,7 @@ export default function Home() {
         <Welcome />
         <ServicesSection />
         <Team />
+        <Career />
         <Contact />
       </main>
       <Footer />
