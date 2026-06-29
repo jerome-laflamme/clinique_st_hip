@@ -69,11 +69,13 @@ const DEPARTMENTS = [
           Voici les spécialistes qui participent au bon déroulement de la
           clinique, ce service est offert à la clientèle du GMF :
         </p>
-        <h3 className={`${h3Card} mb-2.5 text-[1rem]`}>Pharmacienne</h3>
+        <h3 className={`${h3Card} mb-2.5 !text-[1rem]`}>Pharmacienne</h3>
         <ul className={`list-disc pl-5 space-y-0.5 ${para} mt-1.5`}>
           <li>Lysanne Villemure</li>
         </ul>
-        <h3 className={`${h3Card} mt-2.5 text-[1rem]`}>Travailleuse sociale</h3>
+        <h3 className={`${h3Card} mt-2.5 !text-[1rem]`}>
+          Travailleuse sociale
+        </h3>
         <ul className={`list-disc pl-5 space-y-0.5 ${para} mt-1.5`}>
           <li>Nathalie Audet</li>
         </ul>
